@@ -1,0 +1,166 @@
+.span_1 {
+  margin: 10px;
+  height: 27px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.span_1:hover {
+  border-bottom-style: solid;
+  border-bottom-color: black;
+}
+
+.tab_active {
+  border-bottom-style: solid;
+  border-bottom-color: black;
+}
+
+input {
+  display: inline-block;
+  width: 20%;
+  height: 30px;
+  margin-bottom: 1px;
+}
+
+.a_1 {
+  margin: 13% 10% 2% 70%;
+  display: block;
+  height: 33%;
+  border-style: solid;
+  width: 17%;
+  padding: 2px;
+  text-align: center;
+  border-color: rgb(129, 129, 233);
+  background-color: rgb(129, 129, 233);
+}
+
+.a_2 {
+  margin: 2% 10% 2% 70%;
+  display: block;
+  height: 33%;
+  border-style: solid;
+  width: 17%;
+  padding: 2px;
+  text-align: center;
+  border-color: rgb(129, 129, 233);
+  background-color: rgb(129, 129, 233);
+}
+
+.a_3 {
+  margin: 2% 10% 20% 70%;
+  display: block;
+  height: 33%;
+  border-style: solid;
+  width: 17%;
+  padding: 2px;
+  text-align: center;
+  border-color: rgb(129, 129, 233);
+  background-color: rgb(129, 129, 233);
+}
+
+.one {
+  float: left;
+  width: 19%;
+  margin: 10px;
+}
+
+.two {
+  float: right;
+  width: 30%;
+  margin: 10px;
+}
+
+.three {
+  float: left;
+  margin: 10px;
+  width: 43%;
+  height: 50%;
+  padding: 15px;
+}
+
+.picture {
+  height: 90%;
+  width: 90%;
+}
+
+.p_1 {
+  display: inline-block;
+  width: 70%;
+}
+
+.p_2 {
+  display: inline-block;
+
+}
+
+.p_3 {
+  display: inline-block;
+
+}
+
+.div_1 {
+  margin: 10% 2% 0% 0%;
+
+}
+
+.div_2 {
+  padding: 32px;
+  margin: 10px;
+  width: 70%;
+  display: inline-block;
+}
+
+.box_1 {
+  background-color: white;
+  margin: 20px;
+
+}
+
+.act {
+  border-bottom: solid rgb(10, 9, 9);
+  border-width: 2px;
+  display: inline-block;
+  width: 100%;
+  margin: 4px;
+}
+
+.all {
+  background-color: rgba(128, 97, 97, 0.199);
+
+}
+
+.btn-outline-success:hover {
+  color: #fff;
+  background-color: #6f5499;
+  border-color: #6f5499;
+}
+
+.btn-outline-success {
+  color: #6f5499;
+  background-color: white;
+  border-color: #6f5499;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #6f5499;
+  border-color: #6f5499;
+}
+
+.notSelect {
+  color: #6f5499;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #6f5499;
+  border-color: #6f5499;
+}
+
+.card {
+
+  padding: 15px;
+  margin: 18px 5px;
+}

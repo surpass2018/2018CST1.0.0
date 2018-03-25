@@ -1,0 +1,83 @@
+<div class="back">
+
+
+<div class="title">
+ 
+</div>
+
+
+  <div class="banner_user_img">
+
+  </div>
+  <div (click)="goback()"  >
+      <span id="Back" class="fas fa-chevron-left"  style="position: absolute;left: 0.5rem;top: 0.4rem;font-size: 1.9rem;color: #4582EC;"></span>
+  </div>
+  <div class="info_list">
+    <!-- 一条 -->
+    <div class="single_info">
+      <div class="single_info_left">
+        姓名
+      </div>
+      <div class="single_info_right">
+{{StuView.Name}}      </div>
+    </div>
+    <!-- 一条 -->
+    <div class="single_info">
+      <div class="single_info_left">
+        性别
+      </div>
+      <div class="single_info_right">
+   {{StuView.Sex}}
+      </div>
+    </div>
+    <!-- 一条 -->
+    <div class="single_info">
+      <div class="single_info_left">
+        出生年月
+      </div>
+      <div class="single_info_right">
+      {{StuView.Birth | slice:0:10}}
+      </div>
+    </div>
+    <!-- 一条 -->
+    <div class="single_info">
+      <div class="single_info_left">
+        学校
+      </div>
+      <div class="single_info_right">
+  {{StuView.School}}
+      </div>
+    </div>
+    <!-- 一条 -->
+    <div class="single_info">
+      <div class="single_info_left">
+        年级
+      </div>
+      <div class="single_info_right">
+{{StuView.Grade}}
+      </div>
+    </div>
+    <!-- 一条 -->
+    <div class="single_info">
+      <div class="single_info_left">
+        班级
+      </div>
+      <div class="single_info_right">
+{{StuView.Class}}
+      </div>
+    </div>
+    <!-- 一条 -->
+    <div class="single_info"  style="border:none;">
+      <div class="single_info_left">
+        身份证号
+      </div>
+      <div class="single_info_right">
+{{StuView.Identity}}        </div>
+    </div>
+  </div>
+<div (click)="quitLogin()" class="btn btn-danger" style="
+margin:10px auto;display:inherit;text-align:center;width:90%;
+">注销登录</div>
+
+</div>
+

@@ -1,0 +1,137 @@
+
+.wrap{
+    
+    height:100%;
+    width:100%;
+    display: flex;
+    align-items: center;
+    background: white;
+    }
+    
+    
+
+    .login_buttun{
+        justify-content: center;
+    flex-direction: column;
+        height: 48px;
+        width: 80%;
+        background: white;
+        color: #8BC34A;
+        border: 1px solid #8BC34A;
+        border-radius: 5px;
+        margin: 14px auto;
+        text-align: center;
+        line-height: 48px;
+        background: white;
+        display: block;
+    }
+    .login_buttun1{
+        justify-content: center;
+    flex-direction: column;
+        height: 48px;
+        width: 80%;
+        background: white;
+        color: #FF9800;
+        border: 1px solid #FF9800;
+        border-radius: 5px;
+        margin: 14px auto;
+        text-align: center;
+        line-height: 48px;
+        background: white;
+        display: block;
+    }
+    
+    .div3{
+        margin-top:30px;
+        width:80%;
+        margin: 0 auto;
+    }
+    .text1{
+        float: left;
+        color:black;
+        text-align:center;
+        font-size: 0.8rem;
+        margin-top:20px;
+    }
+    
+    .text2{
+        float: right;
+        color:black;
+        text-align:center;
+        font-size: 0.8rem;
+        margin-top:20px;
+    }
+    
+    #wxLogin:hover{
+        background: #8BC34A;
+        color: white;
+    }
+    
+    #phoneLogin:hover{
+        background: #FF9800;
+        color: white;
+    }
+
+
+.typing_loader{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    -webkit-animation: typing 1s linear infinite alternate;
+       -moz-animation: Typing 1s linear infinite alternate;
+            animation: typing 1s linear infinite alternate;
+    margin: -3px auto; /* Not necessary- its only for layouting*/  
+    position: relative;
+    left: -40px;
+}
+@-webkit-keyframes typing{
+    0%{
+        background-color: rgb(250, 250, 250);
+        box-shadow: 40px 0px 0px 0px rgba(255, 242, 242, 0.829), 
+                    80px 0px 0px 0px rgba(243, 243, 243, 0.2);
+      }
+    25%{ 
+        background-color: rgba(248, 243, 241, 0.4);
+        box-shadow: 40px 0px 0px 0px rgb(241, 238, 237), 
+                    80px 0px 0px 0px rgba(245, 242, 242, 0.2);
+    }
+    75%{ background-color: rgba(241, 235, 234, 0.4);
+        box-shadow: 40px 0px 0px 0px rgba(245, 243, 242, 0.2), 
+                    80px 0px 0px 0px rgb(255, 255, 255);
+      }
+}
+
+@-moz-keyframes typing{
+   0%{
+        background-color: rgb(255, 255, 255);
+        box-shadow: 40px 0px 0px 0px rgba(243, 240, 240, 0.2), 
+                    80px 0px 0px 0px rgba(248, 244, 243, 0.2);
+      }
+    25%{ 
+        background-color: rgba(248, 245, 244, 0.4);
+        box-shadow: 40px 0px 0px 0px rgb(240, 235, 234), 
+                    80px 0px 0px 0px rgba(250, 249, 249, 0.2);
+    }
+    75%{ background-color: rgba(240, 235, 234, 0.4);
+        box-shadow: 40px 0px 0px 0px rgba(236, 233, 232, 0.2), 
+                    80px 0px 0px 0px rgb(255, 255, 255);
+      }
+}
+
+@keyframes typing{
+   0%{
+        background-color: rgb(230, 230, 230);
+        box-shadow: 40px 0px 0px 0px rgba(235, 232, 232, 0.2), 
+                    80px 0px 0px 0px rgba(250, 249, 249, 0.2);
+      }
+    25%{ 
+        background-color: rgba(250, 250, 250, 0.4);
+        box-shadow: 40px 0px 0px 0px rgb(250, 249, 248), 
+                    80px 0px 0px 0px rgba(247, 242, 241, 0.2);
+    }
+    75%{ background-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 40px 0px 0px 0px rgba(252, 249, 248, 0.2), 
+                    80px 0px 0px 0px rgb(255, 255, 255);
+      }
+
+    }

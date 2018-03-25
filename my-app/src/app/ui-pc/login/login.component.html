@@ -1,0 +1,64 @@
+
+<div class="cont">
+<form #loginForm="ngForm" (ngSubmit)="valiManager(loginForm)" novalidate class="form-signin">
+  <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+  <h1 class="h3 mb-3 font-weight-normal" style="
+  font-size: 1.4rem;
+">校园NOC 后台管理系统</h1>
+
+<div *ngIf="message" class="alert alert-danger" style="
+margin: 11px 0;
+text-align:  left;
+line-height: 20px;
+"><i class="fas fa-exclamation-circle"></i> 
+{{message}}
+</div>
+
+<div *ngIf="OKmessage" class="alert alert-success" style="
+margin: 11px 0;
+text-align:  left;
+line-height: 20px;
+"><i class="fas fa-check-circle"></i> 
+{{OKmessage}}
+</div>
+
+  <input [(ngModel)]="username" name="username" #name="ngModel"  id="inputEmail"  class="form-control" placeholder="管理员帐号" required minlength="6" autofocus>
+
+
+
+  <div [hidden]="name.valid || name.pristine" class="alert alert-danger" style="
+  margin: 11px 0;
+  text-align:  left;
+  line-height: 20px;
+">
+      <div *ngIf="name.errors?.minlength"> 
+          <i class="fas fa-exclamation-circle"></i>
+        账号长度最少为6位！</div>
+      <div *ngIf="name.errors?.required"><i class="fas fa-exclamation-circle"></i>  管理员账号不能为空！</div>
+  </div>
+
+  <input [(ngModel)]="password" name="password" #pw="ngModel" type="password" id="inputPassword" class="form-control" placeholder="管理员密码" required minlength="6">
+
+    <div [hidden]="pw.valid || pw.pristine" class="alert alert-danger" style="
+
+  text-align:  left;
+  line-height: 20px;
+">
+      <div *ngIf="pw.errors?.minlength"> 
+          <i class="fas fa-exclamation-circle"></i> 
+        密码长度最少为6位！</div>
+      <div *ngIf="pw.errors?.required"><i class="fas fa-exclamation-circle"></i> 密码不能为空！</div>
+  </div>
+
+
+
+
+
+ 
+  <button style="
+  background:  #6f5499;
+" class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="loginForm.invalid" >登录</button>
+  <p class="mt-5 mb-3 text-muted">&copy; 2018-2020</p>
+</form>
+</div>
+

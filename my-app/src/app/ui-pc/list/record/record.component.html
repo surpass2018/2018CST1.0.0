@@ -1,0 +1,105 @@
+<app-search (hadEmit)="SearchKey($event)"></app-search>
+<div class="one" style="
+margin-top: 60px;
+">
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>历史名次</th>
+          <th>成绩</th>
+          <th>提交时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rec of PcRecord">
+            <td>{{rec.Name}}</td>
+            <td>{{rec.Rank}}</td>
+            <td>{{rec.Score}}次/分</td>
+            <td>{{rec.SubmitTime}}</td>
+            <td>
+                <button type="button" class="btn btn-outline-primary " data-toggle="modal" data-target="#video" (click)="playvideo(rec)">查看比赛视频</button>
+                <button type="button" class="btn btn-outline-primary " data-toggle="modal" data-target="#map" (click)="mapclick(rec)">查看上传地点</button>
+                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#quit" (click)="getrecid(rec.Recid)"
+                  [disabled]="false">取消成绩</button>
+            </td>        
+        </tr>
+
+      </tbody>
+    </table>
+
+
+
+  </div>
+
+
+  <ngb-pagination class="d-flex justify-content-end" [collectionSize]="totalPage" [(page)]="page" [maxSize]="6" (pageChange)="ChangedPage($event)"></ngb-pagination>
+  <div class="modal fade" id="quit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle" class="alert alert-danger" role="alert">警告</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h3>是否确认取消该成绩？</h3>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleterecord() ">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="map" tabindex="-1" role="dialog" aria-labelledby="map" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">上传位置</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div style="height:350px;">
+            <baidu-map [options]="opts" style="width: 800px;height: 250px;"></baidu-map>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal fade" id="video" tabindex="-1" role="dialog" aria-labelledby="video" aria-hidden="true" (blur)="theVideo.pause()">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content" >
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">播放视频</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="theVideo.pause()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div >
+                <video [src]="mp4url" controls="controls" #theVideo></video>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="theVideo.pause()">Close</button>
+
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+</div>

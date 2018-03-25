@@ -1,0 +1,43 @@
+<div style="height:10px"></div>
+
+    <div *ngIf = "this.flag == 1" align = "center">
+      
+    <!-- bootstrap card -->
+    <div class="card">
+      <div class = "img1" align = "center">
+        <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="活动图片" style="width: 750px; height: 445px;margin-bottom:8px;" [src]="act?.Picture" data-holder-rendered="true">
+      </div>  
+
+      <div class="card-block" align = "center">
+        <h5 class="card-title">
+          <p>
+            开始时间：{{act?.Start | date:'yyyy-MM-dd'}}&nbsp;&nbsp;&nbsp;
+            结束时间：{{act?.End | date:'yyyy-MM-dd'}}&nbsp;&nbsp;&nbsp;
+            更新时间：{{act?.UpdateTime | date:'yyyy-MM-dd'}}
+            </p>
+        </h5>
+
+        <h5><p>编辑者：{{act?.Publisher}}</p></h5>
+
+        <h3><b><p>活动名称：{{act?.Title}}</p></b></h3>
+
+        <h5><p class="card-text" >{{act?.Detail}}</p></h5>
+
+        <!-- <input class = "btn2" type = "submit" value = "返回" (click) = "goback()"> -->
+        <button class="btn btn-primary" onclick="javascript:history.back(-1)">返回</button>
+        <button class="btn btn-primary" (click) = "tochange()" *ngIf = "act?.Status != 0">修改活动</button>
+        <!-- <input class = "btn2" type = "submit" *ngIf = "act?.Status != 0" value = "修改活动" (click) = "tochange()"> -->
+      </div>
+    </div>
+    <!-- 分页
+    <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li class="active"><a href="#">1</a></li>
+        <li class="disabled"><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul> -->
+</div>
+

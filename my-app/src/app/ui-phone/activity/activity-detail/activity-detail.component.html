@@ -1,0 +1,108 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/litera/bootstrap.min.css" rel="stylesheet" integrity="sha384-MmFGSHKWNFDZYlwAtfeY6ThYRrYajzX+v7G4KVORjlWAG0nLhv0ULnFETyWGeQiU" crossorigin="anonymous">
+
+
+<div id="all">
+
+        <ul  class="nav nav-pills mb-3   nav-fill" id="pills-tab" role="tablist">
+            <div (click)="goback()"  >
+                <span id="Back" class="fas fa-chevron-left"  style="position: absolute;left: 0.5rem;top: 0.4rem;font-size: 1.9rem;color: #4582EC;"></span>
+            </div>
+            <li class="nav-item ">
+            <a  class="nav-link  active show" data-toggle="tab" id="item-act" href="#home" (click)="serlo()">活动详情</a>
+            </li>
+            <li id="item-actranking" class="nav-item" *ngIf = "isrank"  >
+            <a id="item-act" class="nav-link " data-toggle="tab" href="#profile"  >活动排行</a>
+            </li>
+    </ul>
+        <div id="myTabContent" class="tab-content">
+    <!-- detail -->
+        <div class="tab-pane fade active show " id="home">
+            <p class="act_title text-center">
+                <strong>{{ChooesAct?.Title}}</strong>
+            </p>
+            <blockquote id="updatetime" class="blockquote text-right">
+                <cite id="update"title="Source Title" >发布者：{{ChooesAct?.Publisher}}</cite>
+            </blockquote>
+            <ul id="ul-tiem" class="list-inline text-center">
+                <li id="act_start" class="list-inline-item">
+                            开始时间:{{ChooesAct?.Start | slice:0:4}}/{{ChooesAct?.Start | slice:5:7 }}/{{ChooesAct?.Start | slice:8:10 }}
+                </li>
+                <li id="act_end"  class="list-inline-item">
+                            结束时间:{{ChooesAct?.End | slice:0:4}}/{{ChooesAct?.End | slice:5:7 }}/{{ChooesAct?.End | slice:8:10 }}
+                </li>
+            </ul>
+            <p id="act_d1" class="h3">活动介绍</p>
+            <P class="act-detail">&nbsp;&nbsp;&nbsp;&nbsp;{{ChooesAct?.Detail}} </P>
+            <div id="act_img" class="text-center">
+                <img class="img-fluid" alt="Responsive image" src="{{ChooesAct?.Picture}}">
+            </div>
+            <!-- <p id="act_d1" class="h3"><strong>活动规则</strong></p>
+            <ul id="gamerule">
+                    <li>比赛规则1</li>
+                    <li>比赛规则2</li>
+                    <li>比赛规则3</li>
+                    <li>比赛规则4</li>
+            </ul> -->
+        </div>
+    <!-- ranking -->
+        <div  class="tab-pane fade " id="profile">
+
+                <div   id="inputdiv">
+                        <input type="text" class="form-control" placeholder="🔍请输入学生姓名"
+                            id="inputS" aria-label="Amount (to the nearest dollar)"  [(ngModel)]="keyname"
+                            (keyup.enter)="searchstu(keyname)">
+                </div>
+
+                <div id="ranking" >
+                    <table class="table table-sm  ">
+                        <thead >
+                        <tr>
+                            <th style="
+                            padding-left: 17px;
+                            ">排名</th>
+                            <th style="
+                            padding-left: 1.2rem;
+                            ">姓名</th>
+                            <th style="
+                            /* margin-left: 100px; */
+                            padding-left: 1.9rem;
+                            ">学校</th>
+                            <th style="
+                            padding-left: 0px;"
+                            >分数</th>
+                        </tr>
+                        </thead>
+                        <tbody *ngIf = "showrank">
+                            <tr class="bg-primary" *ngIf = "hidenuser" (click)="seerecord(UserRank.Stuid)" >
+                                <td class="td1" scope="row">{{UserRank?.Ranking}}</td>
+                                <td class="td2"   >         {{UserRank?.Name}}</td>
+                                <td class="td3" >           {{UserRank?.School}}</td>
+                                <td class="td4" >           {{UserRank?.Score}}
+                                    <span id="double-right" class="fas fa-angle-double-right"></span>
+                                </td>
+                            </tr>
+                            <div style="
+                                  margin: 10px;
+                              ">
+                            </div>
+                            <tr *ngFor = "let recrank of ShowRanklist;let i = index" (click)="seerecord(recrank.Stuid)">
+                                <td class="td1" *ngIf = "userindex-1 != i">{{recrank.Ranking}}</td>
+                                <td class="td2"       *ngIf = "userindex-1 != i">{{recrank.Name}}</td>
+                                <td class="td3" *ngIf = "userindex-1 != i">{{recrank.School}}</td>
+                                <td class="td4" *ngIf = "userindex-1 != i">{{recrank.Score}}
+                                    <span id="double-right" class="fas fa-angle-double-right"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                </table>
+                <h4 id="serchfail" *ngIf="searchfail" >搜索不到该学生</h4>
+                </div>
+            <p id="more" *ngIf="ismost" class="h4 text-center  t navbar-fixed-bottom" (click)="morerank()" ><u>加载更多</u></p>
+
+        </div>
+</div >
+
+<button id="sumit" type="button" class="btn btn-primary btn-lg btn-block" (click)="submit()" *ngIf = "issumbit" >提交成绩</button>
+
+
+</div>

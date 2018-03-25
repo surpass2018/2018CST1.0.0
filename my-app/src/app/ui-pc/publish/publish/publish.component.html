@@ -1,0 +1,66 @@
+
+<div class="form-row">    
+    <div class="col-md-4">
+        <div class="col">
+            <label>活动标题</label>
+            <input type="data" class="form-control" id="title" [(ngModel)]="title" #title1="ngModel" placeholder="输入活动标题" required>
+            <div [hidden]="title1.valid || title1.pristine" class="alert alert-danger" style=" ">
+            <div *ngIf="title1.errors?.required">
+               活动标题不能为空！</div>
+          </div>
+        </div>
+
+        <div class="col"> 
+            <label>开始时间</label>
+            <input type="date" class="form-control" id="starttime" [(ngModel)]="starttime" #starttime1="ngModel" placeholder="" required>
+            <div [hidden]="starttime1.valid || starttime1.pristine" class="alert alert-danger" style=" ">
+                <div *ngIf="starttime1.errors?.required">  
+                   开始时间不能为空！</div>
+              </div>
+        </div>
+
+        <div class="col">
+            <label>结束时间</label>
+            <input type="date" class="form-control" id="endtime" [(ngModel)]="endtime" #endtime1="ngModel" placeholder="" required>
+            <div [hidden]="endtime1.valid || endtime1.pristine" class="alert alert-danger" style=" ">
+                <div *ngIf="endtime1.errors?.required">
+                   结束时间不能为空！</div>
+              </div>
+        </div>
+    </div>
+   
+    <div class="col-md-4">
+            <label>上传缩略图</label>
+            <div class="file">选择文件
+                <!-- <input type="file" name="inputfile" (change)="selectedFileOnChanged($event)" /> -->
+                <input type="file" accept=".jpg,.png" name="image" (change)="selectedFileOnChanged($event)"> 
+
+            </div>
+            <div>
+                 <!-- <img src="" height="200" alt="loading"> -->
+                 <img [src]="imageurl" onerror="this.src='http://localhost:80/api/uploaded/loading.jpg'" height="180">
+                 <!-- {{this.imageurl}} -->
+            </div>
+    </div>
+
+    <div class="col-md-12"></div>
+
+    <div class="col-md-12">
+        <label>活动介绍</label>
+            <div>
+               <textarea class="form-control introduction" [(ngModel)]="introduction" placeholder="输入活动详情">    
+               </textarea>
+            </div>
+
+
+
+    <div>
+        <div id="main">
+            <!-- <button type="button"class="btn btn-lg btn-primary" (click)="back()">上一步</button> -->
+            <button type="button"class="btn btn-lg btn-primary" (click)="next()">确认</button>
+            <!-- <button type="button"(click)="upload()">上传</button> -->
+        </div>
+    </div>
+</div>
+</div>
+<!-- <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="250x250" style="width: 250px; height: 250px;" ng-src="img" src="" onerror="this.src='https://angular.cn/assets/images/logos/angular/angular.svg'" data-holder-rendered="true"> -->

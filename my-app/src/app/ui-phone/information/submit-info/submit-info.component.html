@@ -1,0 +1,147 @@
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<div class="back">
+    <div class="header" style="  height:60px;  background: #ededed;">
+
+  <div style="width: 100%;/* text-align:  center; */align-items:  center;display:  flex;justify-items:  center;"
+  >
+    <div style="padding: 12px;margin: 10px auto;width: 90%;"
+
+    class="alert alert-danger" >请先完善您的个人信息！</div>
+
+     </div>
+
+    </div>
+
+  <div class="banner_user_img">
+
+  </div>
+
+
+  <div class="info_list">
+    <!-- 一条 -->
+      <div>
+        <input [(ngModel)]="StuInfo.Name" #name="ngModel" class="form-control" placeholder="输入您的姓名" required>
+
+
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger" style="
+          margin: 11px 0;
+          text-align:  left;
+          line-height: 20px;
+        ">
+          <div *ngIf="name.errors?.required">
+            <i class="fas fa-exclamation-circle"></i> 姓名不能为空！</div>
+        </div>
+
+      </div>
+
+
+    <!-- 一条 -->
+    <div class="single_info">
+      <div class="single_info_left">
+        性别
+      </div>
+      <div class="single_info_right">
+        <!-- <select [(ngModel)]="StuInfo.Sex">
+          <option>男</option>
+          <option>女</option>
+        </select> -->
+        <form>
+          <label><input type="radio" name="sex" value="男" [(ngModel)]="StuInfo.Sex" checked>男</label>
+          <label><input type="radio" name="sex" value="女" [(ngModel)]="StuInfo.Sex">女</label>
+          </form>
+      </div>
+    </div>
+    <!-- 一条 -->
+    <div class="single_info">
+      <div class="single_info_left">
+        出生年月
+      </div>
+      <div class="single_info_right">
+        <input [(ngModel)]="StuInfo.Birth" type="date">
+      </div>
+    </div>
+    <!-- 一条 -->
+    <div>
+      <div>
+        <input [(ngModel)]="StuInfo.School" #school="ngModel" class="form-control" placeholder="输入您的所在学校" required>
+
+        <div [hidden]="school.valid || school.pristine" class="alert alert-danger" style="
+          margin: 11px 0;
+          text-align:  left;
+          line-height: 20px;
+        ">
+          <div *ngIf="school.errors?.required">
+            <i class="fas fa-exclamation-circle"></i> 学校不能为空！</div>
+        </div>
+
+      </div>
+    </div>
+    <!-- 一条 -->
+    <div >
+
+      <div >
+        <input [(ngModel)]="StuInfo.Grade" #grade="ngModel" class="form-control" style="margin-top: 10px" placeholder="输入您的所在年级" required>
+
+        <div [hidden]="grade.valid || grade.pristine" class="alert alert-danger" style="
+        margin: 11px 0;
+        text-align:  left;
+        line-height: 20px;
+      ">
+        <div *ngIf="grade.errors?.required">
+
+          <i class="fas fa-exclamation-circle"></i> 年级不能为空！</div>
+      </div>
+
+      </div>
+    </div>
+    <!-- 一条 -->
+    <div >
+      <div >
+        <input [(ngModel)]="StuInfo.Class" #Class="ngModel" class="form-control" placeholder="输入您的所在班级" style="margin-top: 10px"  required >
+
+        <div [hidden]="Class.valid || Class.pristine" class="alert alert-danger" style="
+          margin: 11px 0;
+          text-align:  left;
+          line-height: 20px;
+        ">
+          <div *ngIf="Class.errors?.required">
+              <a class="close" data-dismiss="alert" href="#" aria-hidden="true">
+                  &times;
+              </a>
+            <i class="fas fa-exclamation-circle"></i> 班级不能为空！</div>
+        </div>
+
+      </div>
+    </div>
+    <!-- 一条 -->
+    <div >
+      <div>
+        <input [(ngModel)]="StuInfo.Identity" #ID="ngModel" placeholder="输入您的身份证号" style="margin-top: 10px" class="form-control" required minlength="18"  maxlength="18">
+
+        <div [hidden]="ID.valid || ID.pristine" class="alert alert-danger" style="
+          margin: 11px 0;
+          text-align:  left;
+          line-height: 20px;
+        ">
+        <div *ngIf="ID.errors?.minlength || ID.errors?.maxlength">
+          <i class="fas fa-exclamation-circle"></i>
+        身份证号码为18位！</div>
+        <div *ngIf="ID.errors?.required">
+          <i class="fas fa-exclamation-circle"></i> 身份证号码不能为空！</div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <app-long-btn [name]="btnName" (click)="submit()">
+  </app-long-btn>
+
+</div>
+</div>

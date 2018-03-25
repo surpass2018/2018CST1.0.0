@@ -1,0 +1,112 @@
+#b1{
+    position: fixed;
+    background: #f5f5f5;
+    top:0px;
+    bottom:0px;
+    left: 0px;
+    right: 0px;
+}
+#hearder{
+    margin-top: 0rem;
+    background-color: #ffffff;
+    padding-bottom: 0.4rem;
+}
+
+#background{
+    background-color: #f5f5f5;
+ 
+    position: fixed;
+    bottom: 0px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.input-group{
+    margin-top: 5px;
+}
+
+.user{
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+
+#inputD{
+    font-size: 15px;
+    border-radius: 9px;
+    margin-top: 0.3rem;
+}
+
+#User{
+    font-size: 1.5rem;
+    margin-right: 0.3rem;
+    margin-left: 0.3rem;
+    margin-top: 0.45rem;
+    color: #4582EC;
+}
+
+#Back{
+    font-size: 1.8rem;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    margin-top: 0.3rem;
+    color: #4582EC;
+}
+
+#card_header{
+    padding-top: 0.1rem;
+    padding-bottom: 0rem;
+    background-color: #e3e3e3;
+}
+
+#act_title{
+    font-size: 1.6em;
+    color: black;
+    margin-bottom: 0rem;
+    margin-top: 0.2rem;
+    margin-left: 0.75rem;
+}
+
+#act_card{
+    margin-top: 8px;
+    margin-left: 7px;
+    margin-right: 7px;
+    border-radius: 0px;
+}
+
+#act_n{
+    color: black;
+    font-size: 1.02rem;
+    padding-left: 0.75rem;
+    margin-bottom:0.4rem;
+}
+
+#act_start{
+    color: black;
+    font-size: 1.02rem;
+    padding-left: 0.75rem;
+    margin-bottom: 0.6rem;
+    padding-top: 0.6rem;
+}
+
+#act_end{
+    color: black;
+    font-size: 1.02rem;
+    padding-left: 0.75rem;
+    margin-bottom: 0.6rem;
+    padding-top: 0.6rem;
+}
+
+#act_img{
+    border-radius: 0rem;
+}
+
+#errmessage{
+    position:fixed;
+    top:50%;
+    bottom:50%;
+    left: 34%;
+   
+}

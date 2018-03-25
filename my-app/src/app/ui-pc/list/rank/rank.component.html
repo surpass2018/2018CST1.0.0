@@ -1,0 +1,200 @@
+<div class="head">
+  <app-search  (hadEmit)="SearchChange($event)"></app-search>
+</div>
+
+<div class="one" style="margin-top: 48px;">
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>排名</th>
+          <th>姓名</th>
+          <th>学校</th>
+          <th>比赛视频</th>
+          <th>上传位置</th>
+          <th>历史成绩</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rank of rankList" >
+          <td style="font-size:1.5em;color:rgb(0, 102, 255);font-weight:bolder;"><i>{{rank.Ranking}}</i></td>
+          <td><span [ngbPopover]="popContent" popoverTitle="Greeting" #p="ngbPopover" triggers="manual"></span>{{rank.Name}}</td>
+          <td>{{rank.School}}</td>
+          <td><button type="button" class="btn btn-outline-primary " data-toggle="modal" data-target="#video" (click)="playvideo(rank)">点击播放</button></td>
+          <td><button type="button" class="btn btn-outline-primary " data-toggle="modal" data-target="#map" (click)="mapclick(rank)">查看上传地点</button></td>
+          <td>{{rank.Score}}次/60秒</td>
+          <td><button type="button" class="btn btn-outline-primary " data-toggle="modal" data-target="#exampleModalCenter" (click)="Message(rank)">查看个人信息</button>
+           <button class="btn btn-outline-primary  " (click)="gotoRecord(rank.Stuid);false">查看比赛记录</button>
+           <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#quit" (click)="SelectDelStu(rank)" [disabled]="false">取消参赛资格</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <div style="line-height:100px;text-align: center;font-size:1.2em" *ngIf="!rankList" >
+    当前列表为空！
+  </div>
+    <ngb-pagination class="d-flex justify-content-end" [collectionSize]="totalPage" [(page)]="page" [maxSize]="6" (pageChange)="onGamesPageChanged($event)"></ngb-pagination>
+  </div>
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" >
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">个人信息</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <table class="table">
+                  <tr>
+                    <th>姓名</th>
+                    <td>{{electRank?.Name}}</td>
+                  </tr>
+                  <tr>
+                    <th>性别</th>
+                    <td>{{electRank?.Sex}}</td>
+                  </tr>
+                  <tr>
+                    <th>学校</th>
+                    <td>{{electRank?.School}}</td>
+                  </tr>
+                  <tr>
+                    <th>年级</th>
+                    <td>{{electRank?.Grade}}</td>
+                  </tr>
+                  <tr>
+                      <th>班级</th>
+                      <td>{{electRank?.Class}}</td>
+                    </tr>
+                    <tr>
+                        <th>身份证号码</th>
+                        <td>{{electRank?.Identity}}</td>
+                      </tr>
+              </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" >
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">个人信息</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <table class="table">
+                  <tr>
+                    <th>姓名</th>
+                    <td>{{electRank?.Name}}</td>
+                  </tr>
+                  <tr>
+                    <th>性别</th>
+                    <td>{{electRank?.Sex}}</td>
+                  </tr>
+                  <tr>
+                    <th>学校</th>
+                    <td>{{electRank?.School}}</td>
+                  </tr>
+                  <tr>
+                    <th>年级</th>
+                    <td>{{electRank?.Grade}}</td>
+                  </tr>
+                  <tr>
+                      <th>班级</th>
+                      <td>{{electRank?.Class}}</td>
+                    </tr>
+                    <tr>
+                        <th>身份证号码</th>
+                        <td>{{electRank?.Identity}}</td>
+                      </tr>
+              </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="modal fade" id="quit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle"  class="alert alert-danger" role="alert">警告</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+               <h3>是否确认取消 <span style="font-size:1.2em;font-weight:bolder;">{{SelectDelid?.Name}}</span> 的比赛资格</h3>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="quitStu()">确认</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="modal fade" id="map" tabindex="-1" role="dialog" aria-labelledby="map" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">上传位置</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div style="height:350px;">
+                    <baidu-map [options]="opts" style="width: 800px;height: 250px;">
+                      <marker *ngFor="let marker of markers" [point]="marker.point" [options]="marker.options"></marker>
+                    </baidu-map>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+
+        <div class="modal fade" id="video" tabindex="-1" role="dialog" aria-labelledby="video" aria-hidden="true" (blur)="theVideo.pause()">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content" >
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">播放视频</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="theVideo.pause()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div >
+                    <video [src]="mp4url" controls="controls" #theVideo></video>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="theVideo.pause()">Close</button>
+                </div>
+              </div>
+            </div>
+
+        </div>
+</div>
+
+

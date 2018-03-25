@@ -1,0 +1,60 @@
+
+.back{
+    width:body;
+    min-height:100%;
+    background-color: #EDEDED;
+}
+.title{
+    width:100%;
+    height:40px;
+    line-height: 40px;
+    font-style: 1.0rem;
+    font-weight: 900;
+}
+
+
+.banner_user_img{
+    height:80px;
+    width:80px;
+    margin:5px auto;
+    background-image: url(/assets/img/student-info/user.png);
+    background-size: 80px 80px;
+    /* background-color: rgb(85, 47, 54); */
+}
+
+.info_list{
+    width:100%;
+    padding:5px 5%;
+    background-color:rgb(255, 255, 255);
+    /* height: */
+}
+.single_info{
+    font-size: 0.8rem;
+    height:35px;
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid #e8e7e7;
+}
+.single_info_left{
+    float: left;
+    height:35px;
+    line-height: 35px;
+    /* background-color: rgb(128, 109, 112); */
+}
+.single_info_right{
+    float: right;
+    height:35px;
+    line-height: 35px;
+    width: 65%;
+    text-align: right;
+    /* background-color: rgb(35, 33, 131); */
+}
+.single_info_right select{
+    border: none;
+    -webkit-appearance: none;
+    direction: rtl;
+}
+.single_info_right input{
+    border: none;
+    text-align: right;
+    height:28px;
+}

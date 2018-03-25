@@ -1,0 +1,101 @@
+<div class="title">
+    <!--<img src="../../../../assets/img/back/Arrow.png" class="BackImg" (click)="goBack()">-->
+  <div (click)="goBack()"  >
+    <span id="Back" class="fas fa-chevron-left"  style="position: absolute;left: 0.5rem;top: 0.4rem;font-size: 1.9rem;color: #4582EC;"></span>
+  </div>
+<font>{{UserRecord[0]?.Title}}</font>
+</div>
+<div class="frame">
+        <br/>
+        <br/>
+        <div class="title2">
+            <font>提交记录</font>
+        </div>
+
+        <!-- 循环的东西 -->
+        <div class="content">
+            <div class="record" *ngFor="let userRecord of UserRecord">
+                <div class="record" >
+                    <div class="line1">
+                        <div class="score">
+                            <font>成绩: {{userRecord.Score}}次/分钟</font>
+                        </div>
+                        <div class="rank">
+                            <font *ngIf="userRecord.Disqualification==true"color="red" class="qualification">参赛资格被取消</font>
+                            <font *ngIf="userRecord.Disqualification==false&&userRecord.Cancelscore==true" class="qualification">成绩无效</font>
+                            <font *ngIf="userRecord.Disqualification==false&&userRecord.Cancelscore==false">排名:{{userRecord.Rank}}</font>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class=line2>
+                        <div class="position" >
+                            <font>位置:</font>
+                            <button class="btn btn-outline-primary " type="button" data-toggle="modal" data-target="#map" (click)="mapclick(userRecord)">所在位置</button>
+                        </div>
+                        <br>
+                        <div class="time">
+                            <font>提交时间:   {{userRecord.SubmitTime | date:"yyyy-MM-dd HH:mm:ss":"UTC" }}</font>
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+                        <div class="line3">
+                            <div class="video">
+                            <font>比赛视频</font>
+                            </div>
+                            <div class="href">
+                                    <button type="button" class="btn btn-outline-primary " data-toggle="modal" data-target="#video" (click)="playvideo(userRecord)">点击播放</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade " id="map" tabindex="-1" role="dialog" aria-labelledby="map" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document" style="width: auto;">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">上传位置</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div style="height:350px;">
+                      <baidu-map [options]="position" style="height: 250px;">
+                      <marker *ngFor="let marker of markers" [point]="marker.point" [options]="marker.options"></marker>
+                     </baidu-map>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <div class="modal fade" id="video" tabindex="-1" role="dialog" aria-labelledby="video" aria-hidden="true" (blur)="theVideo.pause()">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content" >
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">播放视频</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="theVideo.pause()">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div>
+                          <video width="100%" [src]="mp4url" #theVideo controls="controls" ></video>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="theVideo.pause()">Close</button>
+                      </div>
+                    </div>
+                  </div>
+
+              </div>
+
+
+    </div>

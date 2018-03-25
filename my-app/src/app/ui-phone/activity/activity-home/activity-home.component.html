@@ -1,0 +1,34 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-jb1k1ntK2AaXuVTIiFXgcGvjcWQrYlrsxipJRLPdwnr1sHBRqSLowOD2q3dIL5KG" crossorigin="anonymous">
+
+   <div id="background" ></div>
+    <p id="errmessage" *ngIf = "iserr">🔍搜索不到该活动</p>
+  <div id="hearder" class="input-group input-group-sm">
+        <div (click)="goback()"  >
+          <span id="Back" class="fas fa-chevron-left"  ></span>
+        </div>
+        <input  type="text" class="form-control" placeholder="🔍  搜索活动"
+         id="inputD" aria-label="Amount (to the nearest dollar)"
+            [(ngModel)]="keyword" (keyup.enter)="search(keyword)" (keyup)="search(keyword)"
+       >
+        <div (click)="toinformation()">
+          <span  id="User" class="fas fa-user"   ></span >
+        </div>
+  </div>
+  <!-- <div class="row"></div> -->
+  <div id="act_card" class="card text-white mb-3"
+    *ngFor = "let oneact of ShowAct"
+    (click)="seedetail(oneact.Actid)"
+    >
+    <img id="act_img" class="card-img-top img-responsive" [src]="oneact?.Picture"  alt="Card image cap" >
+    <p id="act_title" class="card-title">{{oneact.Title}}</p>
+    <div class="form-inline" >
+        <p id="act_start" class="form-inline">
+          开始时间:{{oneact.Start | slice:0:4}}/{{oneact.Start | slice:5:7 }}/{{oneact.Start | slice:8:10 }} &nbsp;
+        </p>
+        <p id="act_end" class="form-inline">
+          结束时间:{{oneact.End | slice:0:4}}/{{oneact.End | slice:5:7 }}/{{oneact.End | slice:8:10 }}
+        </p>
+        <p id="act_n"  >已参加人数:{{oneact.Total}}</p>
+      </div>
+  </div>
+

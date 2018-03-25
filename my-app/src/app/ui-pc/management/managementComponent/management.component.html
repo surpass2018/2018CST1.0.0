@@ -1,0 +1,111 @@
+<br />
+<!-- <div>
+    <span class="subtitle"><img class="img1" src="./assets/administor/u353.png" />学校管理员列表<img class="img2" src="./assets/administor/u299.png"></span>
+    <span class="schooladmin">学校管理员列表 /</span>
+</div> -->
+<!-- <div class="fileinsert"> -->
+<!-- input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" -->
+<button style="margin-right:40px;width:200px;height:40px;text-align:center;" class="fileinsert" data-toggle="modal" data-target="#Warn" (change)="AddAdministor($event)"><span>导入数据</span></button>
+<!-- </div> -->
+<div class="one" style="
+margin-top: 60px;
+">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>管理员姓名</th>
+        <th>所属学校</th>
+        <th>手机号码</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of mem;let i = index">
+        <td>{{i+1}}</td>
+        <td>{{m.Name}}</td>
+        <td>{{m.School}}</td>
+        <td>{{m.Phone}}</td>
+        <td>{{m.Remark}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="mem != null;else showblack">
+    <!-- <div>
+        <span>当前页码为：
+          <input type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" [ngModel]="item" placeholder="{{item}}" (change)="$turnPage($event)"
+          />
+        </span>
+      </div> -->
+    <!-- <div style="margin-top:10px;">
+        <button class="btn btn-primary" (click)="turnPage(-1)">上一页</button>
+        <button class="btn btn-primary" (click)="turnPage(1)">下一页</button>
+        <span>每页显示数量：</span>
+        <input type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" [ngModel]="showItems" placeholder="{{showItems}}" style="width:40px;"
+          (change)="ModefiyPage($event)" />
+      </div> -->
+    <ngb-pagination id="ngbar" class="d-flex justify-content-end" [collectionSize]="total" (page)="page" maxSize="5" rotate="true"
+      (pageChange)="ChangedPage($event)"></ngb-pagination>
+  </div>
+
+  <ng-template #showblack>
+    <div class="NullData">暂无数据成员</div>
+  </ng-template>
+
+</div>
+<button id="ShowErrMsg" style="display:none" data-toggle="modal" data-target="#INSER_FAIL"></button>
+
+
+<div class="modal fade" id="Warn" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="video" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">温馨提示</h5>
+        <button id="FClose" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <font style="word-wrap:break-word">请确定您的文件格式首行必须满足形式为username,password,name,school,phone,remark,super(可选)</font>
+          <br/>
+          <font>否则将造成信息缺失;若文件为csv格式，请注意修改编码为utf-8,请您确定上传？</font>
+        </div>
+      </div>
+      <div class="modal-footer" style="margin:0 auto;border: 1px solid white;">
+        <div class="fileinsert">
+          <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" (change)="AddAdministor($event)"
+          />
+          <span>确定</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="INSER_FAIL" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="video" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">警告,插入失败提醒</h5>
+        <button id="FClose" type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="clearListErr()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="overflow-y:auto;max-height:400px;width:100%;">
+        <div class="one">
+          <table class="table">
+            <tbody>
+              <tr *ngFor="let tip of listErr">
+                <td> {{tip}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="text-align:center;">
+              <button class="btn btn-primary" data-dismiss="modal" aria-label="Close">确定</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,115 @@
+.frame{
+  margin:0 auto;
+  width:80%;
+  /*height:768px;*/
+}
+.frame h4{
+  padding-left:20px;
+  padding-top:15px;
+}
+.BackImg{
+  position: relative;
+  float:left;
+  left: 20px;
+  top:15px;
+}
+.title font{
+  font-size:22px;
+  font-weight:bold;
+  color:black;
+  position: relative;
+  left:40px;
+  top:8px;
+}
+.title2 font{
+  font-size:18px;
+  font-weight: bold;
+  color:black;
+  position: relative;
+  left: 20px;
+}
+.record{
+  width:100%;
+  height:180px;
+  background-color:RGB(242,242,242);
+  box-shadow: 10px 10px 5px #888888;
+  opacity:0.8;
+  margin:0 auto;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+/* .video{
+  width:405px;
+  height:70px;
+  background-color:RGB(242,242,242);
+  margin:0 auto;
+  border-radius: 10px;
+  margin-bottom: 25px;
+} */
+.line3 .video font {
+  float:left;
+  padding-left:20px;
+  padding-top:1px;
+
+}
+a{
+  color:RGB(107,107,107)
+}
+.line3 .href button{
+  float:right;
+}
+.line3{
+  /* height:20px; */
+  position: relative;
+  top:25px;
+}
+/* .video .look a{
+  float:right;
+  padding-right:20px;
+  padding-top:20px;
+  color:RGB(107,107,107);
+} */
+/* .charge {
+  margin-bottom: 25px;
+} */
+.line1 .score{
+  float:left;
+  padding-left:20px;
+  padding-top:10px;
+}
+.line1 .rank{
+  float:right;
+  padding-right:20px;
+  padding-top:10px;
+}
+.line2 .position{
+  position: relative;
+  left:20px;
+  width:80%;
+  /* float:left;
+  padding-left:20px;
+  padding-top:5px; */
+}
+.line2 .time{
+  /* float:left; */
+  /* padding-left:20px;
+  padding-top:20px; */
+  /* width:350px;
+  height:30px; */
+  position: relative;
+  left:20px;
+  bottom:10px;
+  width:80%;
+}
+.line2{
+  height:60px;
+}
+.time font{
+  width:200px;
+}
+.record font{
+  color:RGB(107,107,107)
+}
+.rank .qualification {
+  color:red;
+}

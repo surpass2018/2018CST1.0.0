@@ -1,0 +1,58 @@
+<img  src="../../../../assets/img/back/Arrow.png" class="BackImg" (click)="goBack()">
+<div class="title">
+    <font>我的参赛活动</font>
+</div>
+ <div class="frame">
+<div *ngIf="UserActivities" class="title2">
+    <font>活动记录</font>
+</div>
+        <br/>
+        <br/>
+        <!-- 循环的东西 -->
+        <div class="content">
+            <div *ngIf="!UserActivities" class="warning" >
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                    <img src="../../../../assets/img/user-activity/noact.jpg">
+                           <font>你还没有参加过任何活动噢</font>
+            </div>
+            
+            <div class="list" *ngFor="let userActivities of UserActivities">
+                <input type="hidden" #Actid value={{userActivities.Actid}}/>
+                <div class="touch" (click)="gotoGame_detail(Actid.value)">
+                    <div class="line1">
+                        <div class="actname">
+                            <font>{{userActivities?.Title}}</font>
+                        </div>
+                        <div class="situation">
+                            <font>{{userActivities.Status==0?"已结束":"正在进行"}}</font>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="line2">
+                        <div class="begin">
+                            <font >开始时间 : {{userActivities.Start | date:' yyyy  -  MM  -  dd'}}</font>
+                        </div>
+                        <br/>
+                        <div class="end">
+                            <font>结束时间 : {{userActivities.End | date:' yyyy  -  MM  -  dd'}}</font>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="line3">
+                        <div class="rank">
+                            <font>当前排名: {{userActivities.Rank}}</font>
+                        </div>
+                        <div class="subtime">
+                            <font>提交次数: {{userActivities.SubmitTime}}</font>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,78 @@
+<div style="">
+  <form class="form-inline my-2 my-lg-0" style="
+    float: right;
+">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="key.Keyname" name="inp">
+    <button class="btn btn-outline-success my-2 my-sm-0" (click)="SearchActivity()" (keyup.enter)="SearchActivity()" >Search</button>
+  </form>
+</div>
+
+
+<div style="
+
+      ">
+  <div class="btn btn-primary" [ngClass]="{'notSelect':isNoSelect1}" (click)="list(1)">进行中</div>
+  <div class="btn btn-primary"  [ngClass]="{'notSelect':isNoSelect2}" (click)="list(2)">预告中</div>
+  <div class="btn btn-primary"  [ngClass]="{'notSelect':isNoSelect3}" (click)="list(0)">已结束</div>
+
+</div>
+
+
+<!--*ngIf="NullDivShow" 列表为空div -->
+<div style="line-height:160px;text-align: center;" *ngIf="NullDivShow" >
+  当前列表为空！
+</div>
+
+<div style="height:10px"></div>
+
+
+
+
+
+<div class="row">
+
+
+  <div class="col-sm-4" *ngFor="let activity of activities">
+    <div class="card text-center">
+      <div class="card-block">
+
+
+        <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="活动图片" style="width: 500px; height: 300px;margin-bottom:8px;" [src]="activity.Picture" data-holder-rendered="true">
+        <h3 class="card-title">
+
+          {{activity.Title}} </h3>
+        <p class="card-text">比赛时间：{{activity.Start | date:'yyyy-MM-dd'}}~{{activity.End | date:'yyyy-MM-dd'}}</p>
+        <p class="p_2">已参与人数:{{activity.Total}}</p>
+        <p><button class="btn btn-primary" (click)="rank(activity.Actid)">活动排名</button>
+          <button class="btn btn-primary" (click) = "todetail(activity.Actid)">活动信息</button>
+          <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#exampleModalCenter" (click)="ToEndActivity(activity)" *ngIf="activity.Status!=0">结束活动</button>
+        </p>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">结束活动</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div>
+                <div class="form-group" style="padding-left: 10px;
+        padding-right: 10px;">
+                  <label for="message-text" class="col-form-label">备注</label>
+                  <textarea class="form-control" id="message-text" [(ngModel)]="activity.Remark"></textarea>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-danger" (click)="EndActivity()" (keyup.enter)="EndActivity()" data-dismiss="modal">确定</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
